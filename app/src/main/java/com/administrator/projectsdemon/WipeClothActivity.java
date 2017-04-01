@@ -6,14 +6,20 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
+import com.blankj.utilcode.util.ImageUtils;
+import com.blankj.utilcode.util.Utils;
 
 public class WipeClothActivity extends AppCompatActivity implements View.OnTouchListener{
 
@@ -23,22 +29,48 @@ public class WipeClothActivity extends AppCompatActivity implements View.OnTouch
     private Bitmap alterBitmap;
     private Canvas canvas;
     private Paint paint;
+    private RelativeLayout parent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wipe_cloth);
         initView();
-        initData();
+        final ViewTreeObserver treeObserver = parent.getViewTreeObserver();
+        if (treeObserver != null && treeObserver.isAlive()) {
+            treeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    ViewTreeObserver aliveObserver = treeObserver;
+                    if (!aliveObserver.isAlive()) {
+                        aliveObserver = parent.getViewTreeObserver();
+                    }
+                    if (aliveObserver != null) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            aliveObserver.removeOnGlobalLayoutListener(this);
+                        } else {
+                            aliveObserver.removeGlobalOnLayoutListener(this);
+                        }
+                    }
+                    initData();
+                }
+            });
+        }
     }
 
     private void initData() {
         //此处的bitmap是只读形式
-        Bitmap afterBitmap = getBitmap(R.drawable.after, 500, 800);
-        Bitmap beforeBitmap = getBitmap(R.drawable.before, 500, 800);
+        Log.i("zuo","after_img.width="+after_img.getMeasuredWidth()+" after_img.height="+after_img.getMeasuredHeight());
+//        Bitmap afterBitmap = getBitmap(R.drawable.after, after_img.getWidth(), after_img.getHeight());
+//        Bitmap beforeBitmap = getBitmap(R.drawable.before, before_img.getWidth(), before_img.getHeight());
 
+        Bitmap afterBitmap = ImageUtils.compressByScale(BitmapFactory.decodeResource(getResources(), R.drawable.after), after_img.getWidth(), after_img.getHeight());
+        Bitmap beforeBitmap = ImageUtils.compressByScale(BitmapFactory.decodeResource(getResources(), R.drawable.before), before_img.getWidth(), before_img.getHeight());
 
-        alterBitmap = Bitmap.createBitmap(beforeBitmap.getWidth(), beforeBitmap.getHeight(), Bitmap.Config.ARGB_4444);
+        alterBitmap = Bitmap.createBitmap(beforeBitmap.getWidth(), beforeBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Log.i("zuo","beforeBitmap.width="+beforeBitmap.getWidth()+" beforeBitmap.height="+beforeBitmap.getHeight());
+        Log.i("zuo","beforeBitmap.width="+beforeBitmap.getWidth()+" beforeBitmap.height="+beforeBitmap.getHeight());
+        Log.i("zuo","alterBitmap.width="+alterBitmap.getWidth()+" alterBitmap.height="+alterBitmap.getHeight());
         canvas = new Canvas(alterBitmap);
         paint = new Paint();
         paint.setStrokeCap(Paint.Cap.ROUND);
@@ -48,7 +80,7 @@ public class WipeClothActivity extends AppCompatActivity implements View.OnTouch
         paint.setAntiAlias(true);
         canvas.drawBitmap(beforeBitmap, new Matrix(), paint);
 
-        bitmap = Bitmap.createBitmap(beforeBitmap);
+        this.bitmap = Bitmap.createBitmap(beforeBitmap);
         after_img.setImageBitmap(afterBitmap);
         before_img.setImageBitmap(beforeBitmap);
         before_img.setOnTouchListener(this);
@@ -58,8 +90,8 @@ public class WipeClothActivity extends AppCompatActivity implements View.OnTouch
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), resId, options);
-//        options.inSampleSize = computeSimpleSize(options,reqWidth,reqHeight);
-        options.inSampleSize = 3;
+        options.inSampleSize = computeSimpleSize(options,reqWidth,reqHeight);
+        Log.i("zuo","options.inSampleSize="+options.inSampleSize);
         options.inJustDecodeBounds = false;
         try {
             bitmap = BitmapFactory.decodeResource(getResources(),resId,options);
@@ -73,14 +105,18 @@ public class WipeClothActivity extends AppCompatActivity implements View.OnTouch
         int outWidth = options.outWidth;
         int outHeight = options.outHeight;
 
-        int withRadio = (int) Math.round(outWidth * 0.1 / reqWidth);
-        int heightRadio = (int)Math.round(outHeight*0.1/reqHeight);
-        return Math.max(withRadio, heightRadio);
+        if(outWidth > reqWidth || outHeight > reqHeight){
+            int withRadio =  Math.round((float) outWidth / reqWidth);
+            int heightRadio = Math.round((float) outHeight/reqHeight);
+            return Math.max(withRadio, heightRadio);
+        }
+        return 1;
     }
 
     private void initView() {
         after_img = (ImageView) findViewById(R.id.after_img);
         before_img = (ImageView) findViewById(R.id.before_img);
+        parent = (RelativeLayout) findViewById(R.id.activity_wipe_cloth);
     }
 
 
@@ -107,6 +143,7 @@ public class WipeClothActivity extends AppCompatActivity implements View.OnTouch
                        }
                    }
                }
+               Log.i("zuo","===============================================================");
                before_img.setImageBitmap(alterBitmap);
                break;
            case MotionEvent.ACTION_UP:
@@ -114,4 +151,5 @@ public class WipeClothActivity extends AppCompatActivity implements View.OnTouch
         }
         return true;
     }
+
 }
