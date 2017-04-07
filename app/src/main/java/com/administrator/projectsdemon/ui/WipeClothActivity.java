@@ -1,4 +1,4 @@
-package com.administrator.projectsdemon;
+package com.administrator.projectsdemon.ui;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,6 +18,7 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.administrator.projectsdemon.R;
 import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.Utils;
 

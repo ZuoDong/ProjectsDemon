@@ -4,7 +4,7 @@
     android:id="@+id/activity_multiple_point_touch"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.administrator.projectsdemon.MultiplePointTouchActivity">
+    tools:context="com.administrator.projectsdemon.ui.MultiplePointTouchActivity">
 
     <ImageView
         android:id="@+id/drag_view"

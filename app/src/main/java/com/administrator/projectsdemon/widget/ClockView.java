@@ -1,4 +1,4 @@
-package com.administrator.projectsdemon;
+package com.administrator.projectsdemon.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;

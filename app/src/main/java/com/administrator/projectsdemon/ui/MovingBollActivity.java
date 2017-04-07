@@ -1,4 +1,4 @@
-package com.administrator.projectsdemon;
+package com.administrator.projectsdemon.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

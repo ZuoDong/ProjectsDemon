@@ -4,9 +4,9 @@
     android:id="@+id/activity_clock"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.administrator.projectsdemon.ClockActivity">
+    tools:context="com.administrator.projectsdemon.ui.ClockActivity">
 
-    <com.administrator.projectsdemon.ClockView
+    <com.administrator.projectsdemon.widget.ClockView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>

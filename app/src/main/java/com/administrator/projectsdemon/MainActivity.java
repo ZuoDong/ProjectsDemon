@@ -8,8 +8,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
+
+import com.administrator.projectsdemon.ui.CircleImageActivity;
+import com.administrator.projectsdemon.ui.ClockActivity;
+import com.administrator.projectsdemon.ui.FoldingActivity;
+import com.administrator.projectsdemon.ui.MovingBollActivity;
+import com.administrator.projectsdemon.ui.MultiplePointTouchActivity;
+import com.administrator.projectsdemon.ui.WipeClothActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         addData("两点触控",MultiplePointTouchActivity.class);
         addData("钟表",ClockActivity.class);
         addData("擦衣服",WipeClothActivity.class);
+        addData("圆角图片",CircleImageActivity.class);
     }
 
     private void addData(String content, final Class clzz) {

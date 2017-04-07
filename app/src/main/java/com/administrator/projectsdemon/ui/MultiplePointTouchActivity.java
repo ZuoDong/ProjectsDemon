@@ -1,4 +1,4 @@
-package com.administrator.projectsdemon;
+package com.administrator.projectsdemon.ui;
 
 import android.graphics.Matrix;
 import android.graphics.PointF;
@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.administrator.projectsdemon.R;
 
 public class MultiplePointTouchActivity extends AppCompatActivity implements View.OnTouchListener{
 
