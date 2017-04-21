@@ -14,6 +14,7 @@ import com.administrator.projectsdemon.ui.ClockActivity;
 import com.administrator.projectsdemon.ui.FoldingActivity;
 import com.administrator.projectsdemon.ui.MovingBollActivity;
 import com.administrator.projectsdemon.ui.MultiplePointTouchActivity;
+import com.administrator.projectsdemon.ui.RxJavaActivity;
 import com.administrator.projectsdemon.ui.WipeClothActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         addData("钟表",ClockActivity.class);
         addData("擦衣服",WipeClothActivity.class);
         addData("圆角图片",CircleImageActivity.class);
+        addData("rxjava",RxJavaActivity.class);
     }
 
     private void addData(String content, final Class clzz) {

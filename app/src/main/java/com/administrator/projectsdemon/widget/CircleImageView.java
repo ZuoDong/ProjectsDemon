@@ -27,6 +27,7 @@ import java.lang.ref.WeakReference;
 
 public class CircleImageView extends android.support.v7.widget.AppCompatImageView {
 
+    // TODO: 2017/4/10 测试失败，日后修改
     private Bitmap mMaskBitmap;
     private WeakReference<Bitmap> mWeakBitmap;
     private Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
