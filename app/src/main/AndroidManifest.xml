@@ -2,12 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.administrator.projectsdemon">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--模糊定位权限：一般用于网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!--精确定位权限：一般用于gps定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".MyApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -22,7 +28,9 @@
         <activity android:name=".ui.ClockActivity" />
         <activity android:name=".ui.WipeClothActivity" />
         <activity android:name=".ui.CircleImageActivity" />
-        <activity android:name=".ui.RxJavaActivity"></activity>
+        <activity android:name=".ui.RxJavaActivity" />
+        <activity android:name=".ui.AutoScaleTextActivity" />
+        <activity android:name=".ui.LocationActivity"></activity>
     </application>
 
 </manifest>

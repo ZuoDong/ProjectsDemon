@@ -9,9 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.administrator.projectsdemon.ui.AutoScaleTextActivity;
 import com.administrator.projectsdemon.ui.CircleImageActivity;
 import com.administrator.projectsdemon.ui.ClockActivity;
 import com.administrator.projectsdemon.ui.FoldingActivity;
+import com.administrator.projectsdemon.ui.LocationActivity;
 import com.administrator.projectsdemon.ui.MovingBollActivity;
 import com.administrator.projectsdemon.ui.MultiplePointTouchActivity;
 import com.administrator.projectsdemon.ui.RxJavaActivity;
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         addData("擦衣服",WipeClothActivity.class);
         addData("圆角图片",CircleImageActivity.class);
         addData("rxjava",RxJavaActivity.class);
+        addData("自动缩放文字大小的TextView", AutoScaleTextActivity.class);
+        addData("根据经纬度进行定位",LocationActivity.class);
     }
 
     private void addData(String content, final Class clzz) {

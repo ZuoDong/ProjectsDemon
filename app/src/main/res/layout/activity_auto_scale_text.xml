@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.administrator.projectsdemon.ui.AutoScaleTextActivity">
+
+    <com.administrator.projectsdemon.widget.AutoScaleTextView
+        android:id="@+id/auto_scale_tv"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:background="#33000000"
+        android:textColor="@android:color/black"
+        app:minTextSize="8dp" />
+    <TextView
+        android:id="@+id/show_arg_tv"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+    <Button
+        android:id="@+id/add_text_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="增加字数"/>
+    <Button
+        android:id="@+id/reduce_text_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="减少字数"/>
+    <Button
+        android:id="@+id/clear_text_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="清屏"/>
+    <Button
+        android:id="@+id/exchange_text_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文字转换"/>
+</LinearLayout>
