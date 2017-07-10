@@ -17,6 +17,8 @@ import com.administrator.projectsdemon.ui.LocationActivity;
 import com.administrator.projectsdemon.ui.MovingBollActivity;
 import com.administrator.projectsdemon.ui.MultiplePointTouchActivity;
 import com.administrator.projectsdemon.ui.RxJavaActivity;
+import com.administrator.projectsdemon.ui.VideoDealActivity;
+import com.administrator.projectsdemon.ui.WebViewActivity;
 import com.administrator.projectsdemon.ui.WipeClothActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         addData("rxjava",RxJavaActivity.class);
         addData("自动缩放文字大小的TextView", AutoScaleTextActivity.class);
         addData("根据经纬度进行定位",LocationActivity.class);
+        addData("webview调试",WebViewActivity.class);
+        addData("视频灰度",VideoDealActivity.class);
     }
 
     private void addData(String content, final Class clzz) {

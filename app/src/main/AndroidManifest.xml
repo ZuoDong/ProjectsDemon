@@ -2,11 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.administrator.projectsdemon">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!--模糊定位权限：一般用于网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <!--精确定位权限：一般用于gps定位-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 模糊定位权限：一般用于网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 精确定位权限：一般用于gps定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--读取sd卡的权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".MyApplication"
@@ -30,7 +32,9 @@
         <activity android:name=".ui.CircleImageActivity" />
         <activity android:name=".ui.RxJavaActivity" />
         <activity android:name=".ui.AutoScaleTextActivity" />
-        <activity android:name=".ui.LocationActivity"></activity>
+        <activity android:name=".ui.LocationActivity" />
+        <activity android:name=".ui.WebViewActivity" />
+        <activity android:name=".ui.VideoDealActivity"></activity>
     </application>
 
 </manifest>
